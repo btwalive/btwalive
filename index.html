@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HireWave  Find your next role</title>
+    <meta
+      name="description"
+      content="HireWave  a modern job board to discover, filter, and apply to roles at fast-growing companies."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ================= Header ================= -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#" aria-label="HireWave home">
+          <span class="brand-logo" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="28" height="28">
+              <defs>
+                <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#6366f1" />
+                  <stop offset="1" stop-color="#8b5cf6" />
+                </linearGradient>
+              </defs>
+              <rect x="0" y="0" width="32" height="32" rx="8" fill="url(#bg)" />
+              <path
+                d="M5 20 Q 10 10, 15 20 T 27 20"
+                stroke="white"
+                stroke-width="2.5"
+                fill="none"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+          <span class="brand-name">HireWave</span>
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary">
+          <a href="#jobs">Jobs</a>
+          <a href="#companies">Companies</a>
+          <a href="#categories">Categories</a>
+          <a href="#resources">Resources</a>
+        </nav>
+
+        <div class="header-actions">
+          <button id="savedBtn" class="btn btn-ghost" type="button" aria-label="View saved jobs">
+            <span class="btn-icon" aria-hidden="true"></span>
+            <span>Saved</span>
+            <span class="badge" id="savedCount" hidden>0</span>
+          </button>
+          <a class="btn btn-outline" href="#">Sign in</a>
+          <a class="btn btn-primary" href="#">Post a job</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= Hero ================= -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-eyebrow">10,000+ live roles  Updated daily</span>
+          <h1 class="hero-title">
+            Find work that
+            <span class="hero-title-accent">moves you forward</span>
+          </h1>
+          <p class="hero-sub">
+            Discover roles at fast-growing companies, with transparent salary
+            ranges, real job descriptions, and zero spam.
+          </p>
+
+          <form id="searchForm" class="search-bar" role="search">
+            <div class="search-field">
+              <span class="search-icon" aria-hidden="true"></span>
+              <input
+                id="searchKeyword"
+                type="text"
+                placeholder="Job title, skill, or company"
+                aria-label="Job title, skill, or company"
+                autocomplete="off"
+              />
+            </div>
+            <div class="search-divider" aria-hidden="true"></div>
+            <div class="search-field">
+              <span class="search-icon" aria-hidden="true"></span>
+              <input
+                id="searchLocation"
+                type="text"
+                placeholder="Location (e.g. Bengaluru, Remote)"
+                aria-label="Location"
+                autocomplete="off"
+              />
+            </div>
+            <div class="search-divider" aria-hidden="true"></div>
+            <div class="search-field">
+              <span class="search-icon" aria-hidden="true"></span>
+              <select id="searchExperience" aria-label="Experience">
+                <option value="">Any experience</option>
+                <option value="0-1">Fresher (0-1 yrs)</option>
+                <option value="1-3">1  3 yrs</option>
+                <option value="3-6">3  6 yrs</option>
+                <option value="6-10">6  10 yrs</option>
+                <option value="10+">10+ yrs</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary search-submit">
+              Search jobs
+            </button>
+          </form>
+
+          <div class="hero-trending">
+            <span class="hero-trending-label">Trending:</span>
+            <button class="chip" data-trend="React">React</button>
+            <button class="chip" data-trend="Product Manager">Product Manager</button>
+            <button class="chip" data-trend="Remote">Remote</button>
+            <button class="chip" data-trend="Designer">Designer</button>
+            <button class="chip" data-trend="Data">Data</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Stats strip ================= -->
+    <section class="stats">
+      <div class="container stats-inner">
+        <div class="stat">
+          <div class="stat-value">10k+</div>
+          <div class="stat-label">Live jobs</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">2,400+</div>
+          <div class="stat-label">Hiring companies</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">120+</div>
+          <div class="stat-label">Cities</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">4.8/5</div>
+          <div class="stat-label">Candidate rating</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Jobs section ================= -->
+    <main id="jobs" class="container main-grid">
+      <!-- Filters sidebar -->
+      <aside class="filters" aria-label="Filters">
+        <div class="filters-header">
+          <h2 class="filters-title">Filters</h2>
+          <button id="clearFilters" class="link-btn" type="button">Clear all</button>
+        </div>
+
+        <fieldset class="filter-group">
+          <legend>Work mode</legend>
+          <label class="check"><input type="checkbox" name="workMode" value="Remote" /> <span>Remote</span></label>
+          <label class="check"><input type="checkbox" name="workMode" value="Hybrid" /> <span>Hybrid</span></label>
+          <label class="check"><input type="checkbox" name="workMode" value="Onsite" /> <span>Onsite</span></label>
+        </fieldset>
+
+        <fieldset class="filter-group">
+          <legend>Department</legend>
+          <label class="check"><input type="checkbox" name="department" value="Engineering" /> <span>Engineering</span></label>
+          <label class="check"><input type="checkbox" name="department" value="Design" /> <span>Design</span></label>
+          <label class="check"><input type="checkbox" name="department" value="Product" /> <span>Product</span></label>
+          <label class="check"><input type="checkbox" name="department" value="Data & ML" /> <span>Data &amp; ML</span></label>
+          <label class="check"><input type="checkbox" name="department" value="Marketing" /> <span>Marketing</span></label>
+          <label class="check"><input type="checkbox" name="department" value="Customer Success" /> <span>Customer Success</span></label>
+          <label class="check"><input type="checkbox" name="department" value="People" /> <span>People</span></label>
+        </fieldset>
+
+        <fieldset class="filter-group">
+          <legend>Employment type</legend>
+          <label class="check"><input type="checkbox" name="type" value="Full-time" /> <span>Full-time</span></label>
+          <label class="check"><input type="checkbox" name="type" value="Internship" /> <span>Internship</span></label>
+        </fieldset>
+
+        <fieldset class="filter-group">
+          <legend>Experience</legend>
+          <label class="check"><input type="radio" name="expRange" value="" checked /> <span>Any</span></label>
+          <label class="check"><input type="radio" name="expRange" value="0-1" /> <span>Fresher (0-1 yrs)</span></label>
+          <label class="check"><input type="radio" name="expRange" value="1-3" /> <span>1  3 yrs</span></label>
+          <label class="check"><input type="radio" name="expRange" value="3-6" /> <span>3  6 yrs</span></label>
+          <label class="check"><input type="radio" name="expRange" value="6-10" /> <span>6  10 yrs</span></label>
+          <label class="check"><input type="radio" name="expRange" value="10+" /> <span>10+ yrs</span></label>
+        </fieldset>
+
+        <fieldset class="filter-group">
+          <legend>Min salary (LPA)</legend>
+          <input id="salaryRange" type="range" min="0" max="60" step="1" value="0" />
+          <div class="range-readout">
+            <span></span>
+            <span id="salaryReadout">0 LPA+</span>
+          </div>
+        </fieldset>
+      </aside>
+
+      <!-- Results -->
+      <section class="results" aria-label="Job results">
+        <div class="results-header">
+          <div>
+            <h2 class="results-title" id="resultsTitle">All jobs</h2>
+            <p class="results-meta" id="resultsMeta">Loading</p>
+          </div>
+          <div class="results-controls">
+            <label class="sort-label" for="sortBy">Sort by</label>
+            <select id="sortBy" class="sort-select">
+              <option value="recent">Most recent</option>
+              <option value="salaryDesc">Salary: High to Low</option>
+              <option value="salaryAsc">Salary: Low to High</option>
+              <option value="applicants">Fewest applicants</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="activeChips" class="active-chips" aria-live="polite"></div>
+
+        <div id="jobsList" class="jobs-list" aria-live="polite"></div>
+
+        <div id="emptyState" class="empty" hidden>
+          <div class="empty-emoji" aria-hidden="true"></div>
+          <h3>No jobs match your filters</h3>
+          <p>Try removing a filter or adjusting your search.</p>
+          <button class="btn btn-outline" id="emptyClear" type="button">
+            Clear filters
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= Categories ================= -->
+    <section id="categories" class="categories">
+      <div class="container">
+        <div class="section-head">
+          <h2>Browse by category</h2>
+          <p>Explore roles by the team you want to join.</p>
+        </div>
+        <div class="category-grid">
+          <button class="cat-card" data-cat="Engineering">
+            <span class="cat-icon" style="--c:#6366f1"></span>
+            <span class="cat-name">Engineering</span>
+            <span class="cat-count" data-cat-count="Engineering"></span>
+          </button>
+          <button class="cat-card" data-cat="Design">
+            <span class="cat-icon" style="--c:#8b5cf6"></span>
+            <span class="cat-name">Design</span>
+            <span class="cat-count" data-cat-count="Design"></span>
+          </button>
+          <button class="cat-card" data-cat="Product">
+            <span class="cat-icon" style="--c:#ef4444"></span>
+            <span class="cat-name">Product</span>
+            <span class="cat-count" data-cat-count="Product"></span>
+          </button>
+          <button class="cat-card" data-cat="Data & ML">
+            <span class="cat-icon" style="--c:#10b981"></span>
+            <span class="cat-name">Data &amp; ML</span>
+            <span class="cat-count" data-cat-count="Data & ML"></span>
+          </button>
+          <button class="cat-card" data-cat="Marketing">
+            <span class="cat-icon" style="--c:#f59e0b"></span>
+            <span class="cat-name">Marketing</span>
+            <span class="cat-count" data-cat-count="Marketing"></span>
+          </button>
+          <button class="cat-card" data-cat="Customer Success">
+            <span class="cat-icon" style="--c:#0ea5e9"></span>
+            <span class="cat-name">Customer Success</span>
+            <span class="cat-count" data-cat-count="Customer Success"></span>
+          </button>
+          <button class="cat-card" data-cat="People">
+            <span class="cat-icon" style="--c:#14b8a6"></span>
+            <span class="cat-name">People</span>
+            <span class="cat-count" data-cat-count="People"></span>
+          </button>
+          <button class="cat-card" data-cat="">
+            <span class="cat-icon" style="--c:#64748b"></span>
+            <span class="cat-name">All roles</span>
+            <span class="cat-count" id="allCount"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="cta-strip">
+      <div class="container cta-inner">
+        <div>
+          <h2>Hiring? Reach 1M+ active candidates.</h2>
+          <p>Post your role on HireWave and get matched with vetted talent in days, not weeks.</p>
+        </div>
+        <a class="btn btn-primary btn-lg" href="#">Post a job</a>
+      </div>
+    </section>
+
+    <!-- ================= Footer ================= -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="brand">
+            <span class="brand-name">HireWave</span>
+          </div>
+          <p>The modern way to find work that matters.</p>
+        </div>
+        <div>
+          <h4>For candidates</h4>
+          <ul>
+            <li><a href="#">Browse jobs</a></li>
+            <li><a href="#">Resume builder</a></li>
+            <li><a href="#">Salary insights</a></li>
+            <li><a href="#">Career advice</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>For employers</h4>
+          <ul>
+            <li><a href="#">Post a job</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Employer resources</a></li>
+            <li><a href="#">Talent search</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span> 2026 HireWave. All rights reserved.</span>
+        <span>Made with care for jobseekers.</span>
+      </div>
+    </footer>
+
+    <!-- ================= Job detail modal ================= -->
+    <div id="jobModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+      <div class="modal-backdrop" data-modal-close></div>
+      <div class="modal-panel" role="document">
+        <button class="modal-close" type="button" aria-label="Close" data-modal-close></button>
+        <div id="modalContent" class="modal-content"></div>
+      </div>
+    </div>
+
+    <!-- ================= Toast ================= -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="data/jobs.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
